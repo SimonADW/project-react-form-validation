@@ -1,13 +1,14 @@
 
-import './App.css'
+import styles from './App.module.css'
+import FormComponent from './FormComponent/FormComponent'
 
 function App() {
 
 
-  return (
-    <>
-
-    </>
+  return (       
+      <div className={styles.main_container}>
+        <FormComponent />
+      </div>
   )
 }
 
