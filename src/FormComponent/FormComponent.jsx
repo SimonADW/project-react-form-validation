@@ -39,7 +39,7 @@ export default function FormComponent() {
 
     if (userData.phoneNumber.trim()) {
       if (userData.phoneNumber.length !== 8) {
-        clonedErrors.emailError = "Phone number must be 8 digits";
+        clonedErrors.phoneNumberError = "Phone number must be 8 digits";
       }
     }
 
@@ -63,9 +63,9 @@ export default function FormComponent() {
 
   const handleChange = (event) => {
     const {name, value} = event.target;
-	setErrors((prevErrors)=> ({...prevErrors, [`${name}Error`]: ""}));
+    setErrors((prevErrors)=> ({...prevErrors, [`${name}Error`]: ""}));
     setUserData((prev) => ({ ...prev, [name]: value }));
-    if (name === "message" && name.value.length >= 300) {
+    if (name === "message" && value.length >= 300) {
       setErrors((prev) => ({
         ...prev,
         messageError: "Max characters reached (300)",
@@ -170,7 +170,7 @@ export default function FormComponent() {
           ></textarea>
           <div className={styles.message_error_and_count}>
             <p>{errors.messageError}</p>
-            <p className={styles.message_count}>Character count: {textAreaElement.current ? textAreaElement.current.length: 0} / 300</p>
+            <p className={styles.message_count}>Character count: {textAreaElement.current ? textAreaElement.current.value.length: 0} / 300</p>
           </div>
         </div>
 
